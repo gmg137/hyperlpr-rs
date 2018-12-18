@@ -1,0 +1,12 @@
+[package]
+name = "hyper_lpr"
+version = "0.1.0"
+authors = ["gmg137 <gmg137@live.com>"]
+build = "build.rs"
+edition = "2018"
+
+[dependencies]
+cv = { git = "https://gitee.com/gmg137/cv-rs.git" }
+
+[build-dependencies]
+cc = "*"
