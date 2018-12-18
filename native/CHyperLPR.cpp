@@ -42,35 +42,18 @@ extern "C"
                 );
     }
 
-    //const char* run_pipline_as_image(pr::PipelinePR* prc, cv::Mat* plateImage, int method){
-        //std::vector<pr::PlateInfo> res = prc->RunPiplineAsImage(*plateImage, method);
-        //const std::vector<std::string> CH_PLATE_CODE{"京", "沪", "津", "渝", "冀", "晋", "蒙", "辽", "吉", "黑", "苏", "浙", "皖", "闽", "赣", "鲁", "豫", "鄂", "湘", "粤", "桂", "琼", "川", "贵", "云", "藏", "陕", "甘", "青", "宁", "新", "港", "学", "使", "警", "澳", "挂", "军", "北", "南", "广", "沈", "兰", "成", "济", "海", "民", "航", "空"};
-
-        //for(auto st:res) {
-            //if(st.confidence>0.75 && st.getPlateName().length()==9) {
-                //for(auto ch:CH_PLATE_CODE){
-                    //if(ch==st.getPlateName().substr(0,3)){
-                        //const char* lpr = st.getPlateName().c_str();
-                        //return lpr;
-                    //}
-                //}
-            //}
-        //}
-        //return "";
-    //}
-
     // 从 mat 检测车牌,返回结果集
-    void* plate_recognize(pr::PipelinePR* prc, cv::Mat* plateImage, int method){
+    void* plate_recognize(pr::PipelinePR* prc, cv::Mat* plateImage, int method, int min_w, int max_w){
         vector<pr::PlateInfo> *res = new vector<pr::PlateInfo>();
-        *res = prc->RunPiplineAsImage(*plateImage, method);
+        *res = prc->RunPiplineAsImage(*plateImage, method, min_w, max_w);
         return res;
     }
 
     // 从图片检测车牌,返回结果集
-    void* plate_recognize_as_image(pr::PipelinePR* prc, const char* imagePath, int method){
+    void* plate_recognize_as_image(pr::PipelinePR* prc, const char* imagePath, int method, int min_w, int max_w){
         cv::Mat src = cv::imread(std::string(imagePath));
         vector<pr::PlateInfo> *res = new vector<pr::PlateInfo>();
-        *res = prc->RunPiplineAsImage(src, method);
+        *res = prc->RunPiplineAsImage(src, method, min_w, max_w);
         return res;
     }
 

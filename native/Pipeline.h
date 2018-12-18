@@ -38,7 +38,7 @@ namespace pr{
             ~PipelinePR();
 
             std::vector<std::string> plateRes;
-            std::vector<PlateInfo> RunPiplineAsImage(cv::Mat plateImage,int method);
+            std::vector<PlateInfo> RunPiplineAsImage(cv::Mat plateImage,int method,int min_w,int max_w);
 
     };
 }

@@ -19,6 +19,6 @@ fn test_recognize() {
         "model/SegmenationFree-Inception.prototxt",
         "model/SegmenationFree-Inception.caffemodel",
     );
-    let pl = pr.plate_image_recognize("tests/demo.png", SEGMENTATION_FREE_METHOD);
+    let pl = pr.plate_image_recognize("tests/demo.png", SEGMENTATION_FREE_METHOD, 36, 700);
     assert_eq!(pl[0].plate, "豫G8Y698");
 }

@@ -7,8 +7,6 @@
 
 namespace pr {
 
-
-
     const int HorizontalPadding = 4;
     PipelinePR::PipelinePR(std::string detector_filename,
                            std::string finemapping_prototxt, std::string finemapping_caffemodel,
@@ -33,10 +31,10 @@ namespace pr {
 
     }
 
-    std::vector<PlateInfo> PipelinePR:: RunPiplineAsImage(cv::Mat plateImage,int method) {
+    std::vector<PlateInfo> PipelinePR:: RunPiplineAsImage(cv::Mat plateImage,int method,int min_w,int max_w) {
         std::vector<PlateInfo> results;
         std::vector<pr::PlateInfo> plates;
-        plateDetection->plateDetectionRough(plateImage,plates,36,550);
+        plateDetection->plateDetectionRough(plateImage,plates,min_w,max_w);
 
         for (pr::PlateInfo plateinfo:plates) {
 
