@@ -207,7 +207,7 @@ impl PipelinePR {
                 let p = CStr::from_ptr(get_plate_string(cp))
                     .to_string_lossy()
                     .into_owned();
-                if p.len() >= 9 && get_plate_score(cp) as f64 > 0.77 {
+                if p.len() >= 9 && get_plate_score(cp) as f64 > 0.90 {
                     result.push(PlateInfo {
                         inner: cp,
                         image: cv::Mat::from_raw(get_plate_image(cp)),

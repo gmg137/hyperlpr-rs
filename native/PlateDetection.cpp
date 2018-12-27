@@ -12,7 +12,7 @@ namespace pr{
         cv::Size minSize(min_w,min_w/4);
         cv::Size maxSize(max_w,max_w/4);
         cascade.detectMultiScale( processImage, platesRegions,
-                                  1.1, 3, cv::CASCADE_SCALE_IMAGE,minSize,maxSize);
+                                  1.1, 7, cv::CASCADE_SCALE_IMAGE,minSize,maxSize);
         for(auto plate:platesRegions)
         {
             int zeroadd_w  = static_cast<int>(plate.width*0.30);
